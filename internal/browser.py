@@ -2,7 +2,7 @@ from playwright.sync_api import Playwright, BrowserContext, Browser, BrowserType
 
 class BrowserManager:
     @staticmethod
-    def _get_device(playwright: Playwright, device_type: str) -> dict | None:
+    def _get_device(playwright: Playwright, device_type: str = None) -> dict | None:
         match device_type:
             case "ios":
                 return playwright.devices["iPhone 14 Pro Max"]

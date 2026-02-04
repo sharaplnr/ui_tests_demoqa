@@ -15,5 +15,5 @@ class BasePage:
             return self.page
 
     def reload(self) -> None:
-        """Метод для перезагрузки страницы"""
+        """Перезагрузка страницы"""
         self.page.reload(wait_until="load")

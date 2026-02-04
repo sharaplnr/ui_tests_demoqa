@@ -1,2 +1,5 @@
 .idea/
 env.py
+__pycache__/
+internal/__pycache__/
+tests/__pycache__/
