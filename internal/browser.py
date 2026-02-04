@@ -2,7 +2,7 @@ from playwright.sync_api import Playwright, BrowserContext, Browser, BrowserType
 
 class BrowserManager:
     @staticmethod
-    def get_device(playwright: Playwright, device_type: str) -> dict | None:
+    def _get_device(playwright: Playwright, device_type: str) -> dict | None:
         match device_type:
             case "ios":
                 return playwright.devices["iPhone 14 Pro Max"]
@@ -11,7 +11,7 @@ class BrowserManager:
             case _:
                 return None
 
-    def get_browser_type(playwright: Playwright, browser_name: str) -> BrowserType:
+    def _get_browser_type(playwright: Playwright, browser_name: str) -> BrowserType:
         match browser_name:
             case "firefox":
                 return playwright.firefox
@@ -22,8 +22,8 @@ class BrowserManager:
 
     @staticmethod
     def get_browser_context(playwright: Playwright, browser_name: str, device_type: str, headless: bool = False) -> BrowserContext:
-        browser: Browser = BrowserManager.get_browser_type(playwright, browser_name).launch(headless=headless)
-        device: dict = BrowserManager.get_device(playwright, device_type)
+        browser: Browser = BrowserManager._get_browser_type(playwright, browser_name).launch(headless=headless)
+        device: dict = BrowserManager._get_device(playwright, device_type)
 
         params: dict = dict(
             ignore_https_errors=True,
